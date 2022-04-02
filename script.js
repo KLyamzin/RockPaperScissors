@@ -22,9 +22,7 @@
 > Keep score by adding 1 to you if you win and 1 to computer if you loose, or else do nothing and play next game
 */
 
-
-
-console.log("Weclome to the Game!")
+console.log("Welcome To The Rock Paper Scissors Game! \nPlay five rounds in a row.");
 // Part 1
 // 3 choises of words [0, 1, 2]
 const choices = ['Rock', 'Paper', 'Scissors'];
@@ -37,7 +35,6 @@ const computerSelection = function () {
     console.log("Computer chose: ", genWord);
     return genWord;
 };
-// computerSelection();
 
 //Part 2
 //Player's choice. Prompt and conversion function
@@ -45,7 +42,7 @@ const playerSelection = function () {
     let playerSelectionAny = prompt("Type 'Rock', 'Paper', or 'Scissors':");
     // this will make every word start with the capital letter
     let test = playerSelectionAny.charAt(0).toLocaleUpperCase() + playerSelectionAny.slice(1).toLocaleLowerCase();
-    // tis will thest if the word matches the choices array
+    // this will thest if the word matches the choices array
     if (test === choices[0] || test === choices[1] || test === choices[2]) {
         console.log("You chose: ", test);
         return test;
@@ -54,7 +51,6 @@ const playerSelection = function () {
         playerSelection();
     }
 };
-// playerSelection();
 
 //Part 3.
 //Play a single round of the game.
@@ -75,14 +71,13 @@ const round = function (playerSelection, computerSelection) {
         console.log(`You loose! You ${playerScore}, Computer ${++computerScore} `)
     } else { console.log("It's a tie!") }
 };
-// round(playerSelection(), computerSelection());
 
 // Part 4
 // create function > game < to call > playRound < function inside 5 times
 const game = function () {
     for (let i = 1; i < 6; i++) {
         // game counter
-        console.log(` \n Game ${i} \n`)
+        console.log(` \n    Game ${i} \n`)
         // Pass the playerSelection and computerSelection as arguments invoking both at the same time
         round(playerSelection(), computerSelection());
     };
@@ -90,6 +85,4 @@ const game = function () {
 game();
 
 
-
-
-
+// ~~~ FIN ~~~
