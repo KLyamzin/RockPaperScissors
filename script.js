@@ -59,25 +59,33 @@ const playerSelection = function () {
 //Part 3.
 //Play a single round of the game.
 // if (rock & sc) || (pap & rock) || (sc & pap) - `you win`
+let playerScore = 0;
+let computerScore = 0;
 const round = function (playerSelection, computerSelection) {
-    let playerScore = 1;
-    let computerScore = 1;
     if (playerSelection === choices[0] && computerSelection === choices[2] ||
         playerSelection === choices[1] && computerSelection === choices[0] ||
         playerSelection === choices[2] && computerSelection === choices[1]) {
-        console.log(`You Win! Score is ${playerScore++} `)
+        // adding before displaying the score
+        console.log(`You Win! Your score is ${++playerScore}, computer score is ${computerScore} `)
     }
     // lse if (rock & pap) || (pap & sc) || (sc & rock) - `you lose`
     else if (playerSelection === choices[0] && computerSelection === choices[1] ||
         playerSelection === choices[1] && computerSelection === choices[2] ||
         playerSelection === choices[2] && computerSelection === choices[0]) {
-        console.log(`You loose! Score is ${computerScore++} `)
+        console.log(`You loose! Your score is ${playerScore}, computer score is ${++computerScore} `)
     } else { console.log("It's a tie!") }
 };
-round(playerSelection(), computerSelection());
+// Pass the playerSelection and computerSelection as arguments invoking both at the same time
+// round(playerSelection(), computerSelection());
 
-
-
+// Part 4
+// create function > game < to call > playRound < function inside 5 times
+const game = function () {
+    for (let i = 0; i < 5; i++) {
+        round(playerSelection(), computerSelection());
+    };
+};
+game();
 
 
 
