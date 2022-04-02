@@ -34,7 +34,7 @@ const computerSelection = function () {
     // let genNumb = Math.floor(Math.random() * 3);
     // let genWord = choices[genNumb];
     let genWord = choices[Math.floor(Math.random() * 3)];
-    console.log("\n Computer chose: ", genWord);
+    console.log("Computer chose: ", genWord);
     return genWord;
 };
 // computerSelection();
@@ -43,11 +43,11 @@ const computerSelection = function () {
 //Player's choice. Prompt and conversion function
 const playerSelection = function () {
     let playerSelectionAny = prompt("Type 'Rock', 'Paper', or 'Scissors':");
-    // this will make every word  with the capital letter
+    // this will make every word start with the capital letter
     let test = playerSelectionAny.charAt(0).toLocaleUpperCase() + playerSelectionAny.slice(1).toLocaleLowerCase();
     // tis will thest if the word matches the choices array
     if (test === choices[0] || test === choices[1] || test === choices[2]) {
-        console.log("\n You chose: ", test);
+        console.log("You chose: ", test);
         return test;
     } else {
         alert("Try again...");
@@ -66,22 +66,24 @@ const round = function (playerSelection, computerSelection) {
         playerSelection === choices[1] && computerSelection === choices[0] ||
         playerSelection === choices[2] && computerSelection === choices[1]) {
         // adding before displaying the score
-        console.log(`You Win! Your score is ${++playerScore}, computer score is ${computerScore} `)
+        console.log(`You Win! You ${++playerScore}, Computer ${computerScore} `)
     }
     // lse if (rock & pap) || (pap & sc) || (sc & rock) - `you lose`
     else if (playerSelection === choices[0] && computerSelection === choices[1] ||
         playerSelection === choices[1] && computerSelection === choices[2] ||
         playerSelection === choices[2] && computerSelection === choices[0]) {
-        console.log(`You loose! Your score is ${playerScore}, computer score is ${++computerScore} `)
+        console.log(`You loose! You ${playerScore}, Computer ${++computerScore} `)
     } else { console.log("It's a tie!") }
 };
-// Pass the playerSelection and computerSelection as arguments invoking both at the same time
 // round(playerSelection(), computerSelection());
 
 // Part 4
 // create function > game < to call > playRound < function inside 5 times
 const game = function () {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 1; i < 6; i++) {
+        // game counter
+        console.log(` \n Game ${i} \n`)
+        // Pass the playerSelection and computerSelection as arguments invoking both at the same time
         round(playerSelection(), computerSelection());
     };
 };
