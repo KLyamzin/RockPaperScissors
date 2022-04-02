@@ -58,16 +58,20 @@ const playerSelection = function () {
 let playerScore = 0;
 let computerScore = 0;
 const round = function (playerSelection, computerSelection) {
-    if (playerSelection === choices[0] && computerSelection === choices[2] ||
-        playerSelection === choices[1] && computerSelection === choices[0] ||
-        playerSelection === choices[2] && computerSelection === choices[1]) {
+    if (
+        (playerSelection === choices[0] && computerSelection === choices[2]) ||
+        (playerSelection === choices[1] && computerSelection === choices[0]) ||
+        (playerSelection === choices[2] && computerSelection === choices[1])
+    ) {
         // adding before displaying the score
         console.log(`You Win! You ${++playerScore}, Computer ${computerScore} `)
     }
     // lse if (rock & pap) || (pap & sc) || (sc & rock) - `you lose`
-    else if (playerSelection === choices[0] && computerSelection === choices[1] ||
-        playerSelection === choices[1] && computerSelection === choices[2] ||
-        playerSelection === choices[2] && computerSelection === choices[0]) {
+    else if (
+        (playerSelection === choices[0] && computerSelection === choices[1]) ||
+        (playerSelection === choices[1] && computerSelection === choices[2]) ||
+        (playerSelection === choices[2] && computerSelection === choices[0])
+    ) {
         console.log(`You loose! You ${playerScore}, Computer ${++computerScore} `)
     } else { console.log("It's a tie!") }
 };
