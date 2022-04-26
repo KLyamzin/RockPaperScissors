@@ -1,25 +1,5 @@
 /*
-1. Start with the function called > computerPlay < that will randomly generate 'Rock' 'Paper' 'Scissors'
-> Make an array of the 3 values.
-> Generate a random value from 0 to 2
-> Pass that value to a function that will take the value in the array using the value
-> Print it in console.
-
-2. Let player select or type a value in any case.
-> Create prompt
-> Make the input to Uppercase
-> Check if the prompt === one of the values. If not, return to the prompt again.
-
-3. Create a function that plays a single round of the game
-> Create a function that takes two parameters > playerSelection < and > computerSelection <
-> Function should have if (rock & sc) || (pap & rock) || (sc & pap) - `you win`
-> else if (rock & pap) || (pap & sc) || (sc & rock) - `you lose`
-> else `it's a tie`
-
-4. Play round 
-> create function > game < to call > playRound < function inside 5 times
-> Use for loop to increment the game count
-> Keep score by adding 1 to you if you win and 1 to computer if you loose, or else do nothing and play next game
+Adding UI to the original Rock Paper Scissors game.
 */
 
 console.log("Welcome To The Rock Paper Scissors Game! \nPlay five rounds in a row.");
@@ -29,8 +9,6 @@ const choices = ['Rock', 'Paper', 'Scissors'];
 
 // Generating a random number between 0 - 2
 const computerSelection = function () {
-    // let genNumb = Math.floor(Math.random() * 3);
-    // let genWord = choices[genNumb];
     let genWord = choices[Math.floor(Math.random() * 3)];
     console.log("Computer chose: ", genWord);
     return genWord;
@@ -86,7 +64,7 @@ const game = function () {
         round(playerSelection(), computerSelection());
     };
 };
-game();
+// game();
 
 
 // ~~~ FIN ~~~
