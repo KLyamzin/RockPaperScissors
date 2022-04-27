@@ -59,6 +59,9 @@ body {
     justify-items: center;
     align-items: center;
     margin-top: 20px;
+
+    /* grid-auto-flow: dense;
+    direction: rtl; */
 }
 
 .result-selection {
@@ -67,7 +70,7 @@ body {
 
 .result-selection.winner {
     opacity: 1;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .release {

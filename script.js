@@ -1,11 +1,10 @@
 /*
 Adding UI to the original Rock Paper Scissors game.
 */
-
 console.log("Welcome To The Rock Paper Scissors Game!");
-// Part 1
 
 const selectionButtons = document.querySelectorAll("[data-id]");
+const finalColumn = document.querySelector('[data-final-column]');
 const SELECTIONS = [
     {
         name: "rock",
@@ -27,20 +26,81 @@ const SELECTIONS = [
 selectionButtons.forEach(button => {
     button.addEventListener("click", e => {
         const selectionName = button.dataset.id
-        makeSelection(selectionName);
+        const selection = SELECTIONS.find(sel => sel.name === selectionName);
+
+        // I really struggled to come up with this 2 lines of code. They remove the created div before adding a new div.
+        const delElm = document.querySelectorAll('.result-selection')
+        delElm.forEach(del => { del.remove() })
+
+        makeSelection(selection);
+
+
     })
 })
+
+// Determing who is the winner
 function makeSelection(selection) {
-    console.log(selection);
+    const aiSelection = aiGenNumb();
+    const yourWinner = isWinner(selection, aiSelection);
+    const aiWinner = isWinner(aiSelection, selection)
+
+    addSelectionResult(aiSelection, aiWinner);
+    addSelectionResult(selection, yourWinner);
+
+}
+function addSelectionResult(selection, winner) {
+
+    const div = document.createElement('div')
+    div.innerText = selection.emoji
+    div.classList.add('result-selection')
+    if (winner) div.classList.add('winner')
+    finalColumn.after(div)
+
 }
 
+
+
+/* 
+const div1 = finalColumn.querySelector('#player').classList.add('result-selection')
+const div2 = finalColumn.querySelector('#ai').classList.add('result-selection')
+// div1.innerText = selection.emoji;
+// div1.classList.add("result-selection");
+if (yourWinner) div1.classList.add('winner');
+// div2.classList.add("result-selection");
+if (aiWinner) div2.classList.add('winner'); */
+
+// console.log("AI ", aiSelection);
+
+function isWinner(playerSelection, aiSelection) {
+    const result = playerSelection.beats === aiSelection.name;
+    // console.log(result);
+    return result;
+}
+function aiGenNumb() {
+    const genIndex = Math.floor(Math.random() * SELECTIONS.length);
+    return SELECTIONS[genIndex];
+}
+
+// function addSelectionResult(selection, winner) {
+//     const div = document.getElementById('ai');
+//     div.innerText = selection.emoji;
+//     div.classList.add('result-selection')
+//     if (winner) div.classList.add('winner');
+//     finalColumn.after(div)
+// }
+
+// function addEmojiPlayer(selection, winner) {
+//     const div = document.getElementById('player')
+//     div.innerText = selection.emoji;
+//     div.classList.add('result-selection')
+//     if (winner) div.classList.add('winner');
+//     finalColumn.after(div)
+//}
 // Generating a random number between 0 - 2
-const computerSelection = SELECTIONS[Math.floor(Math.random() * 3)];
-// const computerSelection = function () {
-//     let genWord = choices[Math.floor(Math.random() * 3)];
-//     console.log("Computer chose: ", genWord);
-//     return genWord;
-// };
+
+
+
+
 
 /* //Part 2
 //Player's choice. Prompt and conversion function
