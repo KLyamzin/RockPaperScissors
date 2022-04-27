@@ -2,24 +2,54 @@
 Adding UI to the original Rock Paper Scissors game.
 */
 
-console.log("Welcome To The Rock Paper Scissors Game! \nPlay five rounds in a row.");
+console.log("Welcome To The Rock Paper Scissors Game!");
 // Part 1
-// 3 choises of words [0, 1, 2]
-const choices = ['Rock', 'Paper', 'Scissors'];
+
+const selectionButtons = document.querySelectorAll("[data-id]");
+const SELECTIONS = [
+    {
+        name: "rock",
+        emoji: '✊',
+        beats: "scissors"
+    },
+    {
+        name: "paper",
+        emoji: '✋',
+        beats: "rock"
+    },
+    {
+        name: "scissors",
+        emoji: '✌️',
+        beats: "paper"
+    }
+];
+
+selectionButtons.forEach(button => {
+    button.addEventListener("click", e => {
+        const selectionName = button.dataset.id
+        makeSelection(selectionName);
+    })
+})
+function makeSelection(selection) {
+    console.log(selection);
+}
 
 // Generating a random number between 0 - 2
-const computerSelection = function () {
-    let genWord = choices[Math.floor(Math.random() * 3)];
-    console.log("Computer chose: ", genWord);
-    return genWord;
-};
+const computerSelection = SELECTIONS[Math.floor(Math.random() * 3)];
+// const computerSelection = function () {
+//     let genWord = choices[Math.floor(Math.random() * 3)];
+//     console.log("Computer chose: ", genWord);
+//     return genWord;
+// };
 
-//Part 2
+/* //Part 2
 //Player's choice. Prompt and conversion function
 const playerSelection = function () {
     let playerSelectionAny = prompt("Type 'Rock', 'Paper', or 'Scissors':");
+
     // this will make every word start with the capital letter
     let test = playerSelectionAny.charAt(0).toLocaleUpperCase() + playerSelectionAny.slice(1).toLocaleLowerCase();
+
     // this will thest if the word matches the choices array
     if (test === choices[0] || test === choices[1] || test === choices[2]) {
         console.log("You chose: ", test);
@@ -28,12 +58,12 @@ const playerSelection = function () {
         alert("Try again...");
         playerSelection();
     }
-};
+}; */
 
 //Part 3.
 //Play a single round of the game.
-// if (rock & sc) || (pap & rock) || (sc & pap) - `you win`
-let playerScore = 0;
+
+/* let playerScore = 0;
 let computerScore = 0;
 const round = function (playerSelection, computerSelection) {
     if (
@@ -52,9 +82,9 @@ const round = function (playerSelection, computerSelection) {
     ) {
         console.log(`You loose! You ${playerScore}, Computer ${++computerScore} `)
     } else { console.log("It's a tie!") }
-};
+}; */
 
-// Part 4
+/* // Part 4
 // create function > game < to call > playRound < function inside 5 times
 const game = function () {
     for (let i = 1; i < 6; i++) {
@@ -64,7 +94,7 @@ const game = function () {
         round(playerSelection(), computerSelection());
     };
 };
-// game();
-
+game();
+*/
 
 // ~~~ FIN ~~~

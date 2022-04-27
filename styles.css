@@ -27,7 +27,7 @@ body {
     width: 90%;
 }
 
-.selections button {
+.selection {
     cursor: pointer;
     outline: none;
     border-radius: 50%;
@@ -35,7 +35,6 @@ body {
     width: 100px;
     font-size: 50px;
     border: none;
-    /* background-color: #63afff; */
     background-color: #ff8763;
     margin-top: 10px;
     margin-bottom: 10px;
