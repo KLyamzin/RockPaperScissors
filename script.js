@@ -5,6 +5,9 @@ console.log("Welcome To The Rock Paper Scissors Game!");
 
 const selectionButtons = document.querySelectorAll("[data-id]");
 const finalColumn = document.querySelector('[data-final-column]');
+const playerScoreSpan = document.querySelector('[data-player-score]');
+const aiScoreSpan = document.querySelector('[data-ai-score]');
+const gameStatus = document.querySelector('[data-game-status]');
 const SELECTIONS = [
     {
         name: "rock",
@@ -33,8 +36,6 @@ selectionButtons.forEach(button => {
         delElm.forEach(del => { del.remove() })
 
         makeSelection(selection);
-
-
     })
 })
 
@@ -42,34 +43,45 @@ selectionButtons.forEach(button => {
 function makeSelection(selection) {
     const aiSelection = aiGenNumb();
     const yourWinner = isWinner(selection, aiSelection);
-    const aiWinner = isWinner(aiSelection, selection)
+    const aiWinner = isWinner(aiSelection, selection);
 
     addSelectionResult(aiSelection, aiWinner);
     addSelectionResult(selection, yourWinner);
 
-}
-function addSelectionResult(selection, winner) {
+    // increment score
+    if (yourWinner) {
+        incrementScore(playerScoreSpan);
+        gameStatus.innerText = "You Win!"
+        gameStatus.classList.add('victory')
+        gameStatus.classList.remove('defeat', 'tie')
+    }
+    else if (aiWinner) {
+        incrementScore(aiScoreSpan);
+        gameStatus.innerText = "You Lost!"
+        gameStatus.classList.add('defeat')
+        gameStatus.classList.remove('victory', 'tie')
+    }
+    else {
+        gameStatus.innerText = "Tie!"
+        gameStatus.classList.add('tie')
+        gameStatus.classList.remove('victory', 'defeat')
+    }
 
+
+}
+
+function incrementScore(scoreSpan) {
+    scoreSpan.innerText = parseInt(scoreSpan.innerText) + 1;
+}
+
+function addSelectionResult(selection, winner) {
     const div = document.createElement('div')
     div.innerText = selection.emoji
     div.classList.add('result-selection')
     if (winner) div.classList.add('winner')
     finalColumn.after(div)
-
 }
 
-
-
-/* 
-const div1 = finalColumn.querySelector('#player').classList.add('result-selection')
-const div2 = finalColumn.querySelector('#ai').classList.add('result-selection')
-// div1.innerText = selection.emoji;
-// div1.classList.add("result-selection");
-if (yourWinner) div1.classList.add('winner');
-// div2.classList.add("result-selection");
-if (aiWinner) div2.classList.add('winner'); */
-
-// console.log("AI ", aiSelection);
 
 function isWinner(playerSelection, aiSelection) {
     const result = playerSelection.beats === aiSelection.name;
@@ -80,26 +92,6 @@ function aiGenNumb() {
     const genIndex = Math.floor(Math.random() * SELECTIONS.length);
     return SELECTIONS[genIndex];
 }
-
-// function addSelectionResult(selection, winner) {
-//     const div = document.getElementById('ai');
-//     div.innerText = selection.emoji;
-//     div.classList.add('result-selection')
-//     if (winner) div.classList.add('winner');
-//     finalColumn.after(div)
-// }
-
-// function addEmojiPlayer(selection, winner) {
-//     const div = document.getElementById('player')
-//     div.innerText = selection.emoji;
-//     div.classList.add('result-selection')
-//     if (winner) div.classList.add('winner');
-//     finalColumn.after(div)
-//}
-// Generating a random number between 0 - 2
-
-
-
 
 
 /* //Part 2

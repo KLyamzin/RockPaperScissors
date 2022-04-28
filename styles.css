@@ -9,9 +9,10 @@ body {
 .main-body {
     /* height: 400px; */
     width: 50%;
+    height: 25%;
     min-width: 600px;
     background-color: #ffffff;
-    padding: 40px 30px;
+    padding: 40px 30px 20px 30px;
     border-radius: 10px;
     position: absolute;
     transform: translate(-50%, -50%);
@@ -23,6 +24,7 @@ body {
 .selections {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     margin: auto;
     width: 90%;
 }
@@ -59,31 +61,53 @@ body {
     justify-items: center;
     align-items: center;
     margin-top: 20px;
-
-    /* grid-auto-flow: dense;
-    direction: rtl; */
+    height: 55px;
 }
 
 .result-selection {
-    opacity: .5;
+    opacity: .6;
+    font-size: 1.8rem;
 }
 
 .result-selection.winner {
     opacity: 1;
-    font-size: 2rem;
+    font-size: 2.5rem;
+    text-shadow: 3px 3px 10px #ffb363;
 }
 
-.release {
-    margin-top: 10px;
-    margin-bottom: 10px;
+
+.victory,
+.defeat,
+.tie {
+    width: 180px;
+    margin: 10px auto;
+    /* margin-bottom: 10px; */
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* border: solid black 1px; */
+    border-radius: 45px;
 }
 
 .results,
-.release {
+.victory,
+.defeat,
+.tie {
     font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
     font-weight: 500;
+
+}
+
+.victory {
+    background-color: #00dea4;
+}
+
+.defeat {
+    background-color: #ff8763;
+}
+
+.tie {
+    background-color: #b1b1b1;
 }
