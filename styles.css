@@ -75,7 +75,6 @@ body {
     text-shadow: 3px 3px 10px #ffb363;
 }
 
-
 .victory,
 .defeat,
 .tie {
@@ -97,7 +96,6 @@ body {
     font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;
     font-weight: 500;
-
 }
 
 .victory {
